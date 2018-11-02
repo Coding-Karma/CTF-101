@@ -1,0 +1,221 @@
+# Remeber to submit all your answers in the format of picoCTF{your_answer}
+# All the solutions have been done in debian linux OS
+
+1. Forensics Warmup 1 
+Just download the file.
+open the terminal and cd to Downloads
+Type "unzip flag.zip" to extract the file
+Just view the jpg file to capture the flag.
+
+
+2. Forensics Warmup 2 
+The extension PNG is just a facade
+Actually it is not a png file.
+Just open the file with a browser and there you have the flag
+
+
+3. General Warmup 1 
+Type python in terminal.
+Then ommit 0x and type "41".decode("hex")
+There you have your flag
+
+
+4. General Warmup 2
+Type python in terminal 
+Type "bin(given_number)" to get your flag
+
+
+5. General Warmup 3
+Type python in terminal
+Type "h = '3d' (press enter)
+	i = int(h, 16) (press enter)
+	print i"
+
+
+6. Resources
+Go to the link
+Scroll down to the bottom of the page and find for picoCTF string
+
+
+7. Reversing Warmup 1
+Download the file
+Change the permission of the file by typing "chmod 777 run" in terminal
+Now execute the file using "./run" command.
+
+
+8. Reversing Warmup 2
+Go to python in terminal
+Copy the weird base64 string and type "'weird_string'.decode('base64')"
+There you have the flag, submit it in the specified format
+
+
+9. Crypto Warmup 1
+It is a simple example of what is called as 'Vignere Cipher'
+So find online tool for vignere decoding and follow the instructions to retrive your flag
+
+
+10. Crypto Warmup 2
+It is rot13 encryption challenge.
+Again decode using online decoder
+
+
+11. grep 1
+Download the file
+Type "cat file | grep pico"
+There you have your flag
+
+
+12. netcat
+Copy the url and type "netcat url port_number" 
+You got your flag
+
+
+13. HEEEEEEERE'S Johnny! 
+A little tricky challenge for those of who are not familiar with how linux stores user 
+information and hashes the passwords 
+
+User info. is sotred at /etc/passwd
+and the hashed passowrd for corresponding users is stored at /etc/shadow
+
+Jhony here refers to a free password cracking tool John the Ripper
+
+I am using Kali Linux here, so I have it pre installed. It you dont have it look online how to install it.
+
+Now first donwload both the files
+unshadow the files using "unshadow passwd shadow > file.txt"
+now this file can be used as input to john the ripper tool
+Just type "john file.txt" and you will have the password on the terminal screen
+
+
+14. strings
+Here we will be using the strings command in linux
+The strings command returns each string of printable characters in files. 
+Its main uses are to determine the contents of and to extract text from binary files (i.e., non-text files).
+
+Go ahead and download the file 
+Just type "strings strings | grep pico" 
+There you go !!!
+
+
+15. pipe
+pipe is a form of redirection that is used in linux to send the output of one program to another for further processing.
+
+It is done using "|" symbol between two successive commands 
+
+To solve the challenge you are provided to connect to the given url and find the flag through junk outputs.
+
+Which concludes at a simple solution like "nc url port | grep pico"
+
+ 
+16. Inspect Me
+Go to the link. Right click and click on inspect element.
+
+Read the html source code to find 1/3 part of the total flag
+Then find the remaining flag parts in js and css files
+
+
+17. grep 2
+Connect to the shell and login with your credentials
+next cd to the specified path.
+
+You will encounter the bunch of overwhleming number of files to look through for your flag
+
+Don't worry grep -r (recursive) search flag is here
+
+Just type "grep -r picoCTF path" 
+
+The file containg the picoCTF flag will pop in no time
+
+
+18. Aca-Shell-A
+This one's an interesting one and tricky for those new to linux. As the description suggests you, 
+I also recommend on learning linux commands, then its nothing much
+
+Just follow the commands as they are written bellow (along with " and ')
+
+cd secret
+ls
+rm *
+"echo 'Drop it in!' "
+cd ..
+cd executables
+ls
+./dontLookHere
+whoami 
+cp /tmp/TopSecret passwords
+cd ..
+cd passwords
+cat TopSecret
+
+And you are done !!!
+
+
+19. Client Side is Still Bad
+The below mentioned script might be overwhelming but you can do it manually very easily
+by inspecting the source code and solve the javascript function "verify()" written in html of the page.
+
+Just read it in reverse order and u fetch your flag.
+
+Direct script goes like this
+curl -s "http://2018shell3.picoctf.com:8249/" | head -n 20 | cut -d "'" -f2 | tac | head -n 8 | tr -d "\n"
+
+
+20. Desrouleaux (Unsolved)
+
+
+21. Logon
+Here I have used a web proxy tool named Burpsuite
+
+Configure the burpsuite with your browser and intercept the request that is sent over when you type anything 
+in the username and password field
+
+You will see that the admin flag is set to False in that request just switch it to True and there you go !
+
+You will have the flag given to you just like that.
+
+
+22. Reading Between the Eyes
+Here donwload the image
+Use online image decoder to get the flag.
+
+
+23. Recovering From the Snap (Unsolved)
+
+
+24. admin panel (Unsolved)
+
+
+25. assembly-0 (Unsolved)
+
+
+26. buffer overflow 0
+Connect to the given shell with your credentials.
+
+Read the source code to find 
+That it takes an input file called flag.txt and then expects a command line argument which it copies to a buffer of 16
+using unsafe function strcpy.
+
+Just have a command line argument larger than 16 character while running the vuln file and you are set
+
+I found that it gave the output as picoCTF for number of charcter greater than around 27 chars before that it gave segmentation
+fault (core dump) error.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
